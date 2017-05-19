@@ -4,17 +4,32 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private List<Contact> peopleList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        intiCon(); //初始化联系人
+        RecyclerView contactView = (RecyclerView) findViewById(R.id.contactView);
+        LinearLayoutManager layoutManger = new LinearLayoutManager(this);
+        contactView.setLayoutManager(layoutManger);
+        ContactAdapter adapter = new ContactAdapter(peopleList);
+        contactView.setAdapter(adapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -43,10 +58,21 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_settings) {
+            Toast.makeText(this, "set", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if(id == R.id.menu_add) {
+            Toast.makeText(this, "add", Toast.LENGTH_SHORT).show();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void intiCon() {
+        for (int i = 0; i <20 ; i++) {
+            peopleList.add(new Contact());
+        }
     }
 }
