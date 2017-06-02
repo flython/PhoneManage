@@ -2,5 +2,6 @@
     <string name="app_name">PhoneManage</string>
     <string name="menu_settings">settings</string>
     <string name="menu_add">contrct</string>
+    <string name="title_activity_add_contact">add_contact</string>
 
 </resources>
