@@ -9,14 +9,14 @@
     >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/item_headPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"
         android:src="@drawable/default_head" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/item_name"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:gravity="center_vertical"
